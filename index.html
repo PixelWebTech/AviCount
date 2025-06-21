@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Compteur de Points</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🎯 Compteur de Points</h1>
+    <div class="controls">
+      <input type="text" id="playerName" placeholder="Nom du joueur" />
+      <button onclick="addPlayer()">➕ Ajouter</button>
+      <button onclick="sortPlayers()">🔃 Trier</button>
+      <button onclick="resetAll()">♻️ Réinitialiser</button>
+    </div>
+    <div id="players"></div>
+    <footer>
+      <p>App Web par Tonton Web</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
