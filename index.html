@@ -1,26 +1,73 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Compteur de Points</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <h1>🎯 Compteur de Points</h1>
-    <div class="controls">
-      <input type="text" id="playerName" placeholder="Nom du joueur" />
-      <button onclick="addPlayer()">➕ Ajouter</button>
-      <button onclick="sortPlayers()">🔃 Trier</button>
-      <button onclick="resetAll()">♻️ Réinitialiser</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>✈️ AVIT COUNT</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="loginScreen" class="login-screen">
+      <div class="login-card">
+        <div class="login-box">
+          <h2>✈️ AVIT COUNT</h2>
+          <h2>Connexion</h2>
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Mot de passe"
+          />
+          <button onclick="checkLogin()">Se connecter</button>
+          <p id="loginError" class="error" style="display: none">
+            Mot de passe incorrect
+          </p>
+        </div>
+      </div>
     </div>
-    <div id="players"></div>
-    <footer>
-      <p>App Web par Tonton Web</p>
-    </footer>
-  </div>
-  <script src="script.js"></script>
-</body>
+
+    <div id="splash">
+      <div class="loader">Chargement...</div>
+    </div>
+
+    <div class="container" style="display: none">
+      <h1 class="title">✈️ Compteur Avitaillement ✈️</h1>
+
+      <div class="controls">
+        <input type="text" id="playerName" placeholder="Nom de l'avitailleur" />
+        <select id="timeSlot">
+          <option value="5h">5h</option>
+          <option value="5h">5h30</option>
+          <option value="6h">6h</option>
+          <option value="13h">13h</option>
+          <option value="13h30">13h30</option>
+          <option value="14h">14h</option>
+          <option value="14h30">14h30</option>
+        </select>
+        <button onclick="addPlayer()">➕ Ajouter</button>
+
+        <select id="sortMode" onchange="render()">
+          <option value="scoreDesc">🔽 Points décroissants</option>
+          <option value="scoreAsc">🔼 Points croissants</option>
+          <option value="timeAsc">🕓 Ordre créneau horaire</option>
+        </select>
+
+        <button onclick="exportTXT()">📤 Export TXT</button>
+        <button onclick="undo()">↩️ Annuler</button>
+        <button onclick="toggleDarkMode()">🌓 Mode</button>
+        <button onclick="resetAll()">🔄 Remise à zéro</button>
+      </div>
+
+      <canvas id="scoreChart"></canvas>
+      <div id="players"></div>
+
+      <footer>
+        <p class="footer">Développé par PIXELWEBTECH - 2025</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
